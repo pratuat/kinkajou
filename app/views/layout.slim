@@ -1,0 +1,9 @@
+doctype html
+html
+  head
+    title app-name
+    link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css"
+  body
+    == slim :header
+    .container.columns.col-gapless style="margin: 40px auto 0px; width: 1200px;"
+      == yield
