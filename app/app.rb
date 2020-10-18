@@ -11,4 +11,10 @@ class App < Sinatra::Base
   get '/' do
     slim :index
   end
+
+  post '/filter_customers' do
+    content = params[:file]['tempfile'].read
+
+    [200, {}, 'Success']
+  end
 end
