@@ -1,3 +1,5 @@
 en:
   app:
     name: 'Kinkajou'
+  dashboard:
+    upload_file: Upload File

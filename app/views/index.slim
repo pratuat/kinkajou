@@ -1,1 +1,11 @@
-h3 index content
+.col-6
+    h3.col-6
+      = I18n.t('dashboard.upload_file')
+
+    form.form-group.col-6 action='/filter_invitation' method='post' enctype="multipart/form-data" remote=true
+        input style="margin: 15px 0; font-size: 20px;" type='file' name='customer_data'
+
+        input.btn.col-6 style="margin: 15px 0; background-color: #2B6CDE; color: #fff;" type='submit' value='Submit'
+
+.col-6
+    h3 Results
