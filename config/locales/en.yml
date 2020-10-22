@@ -1,5 +1,11 @@
 en:
   app:
-    name: 'Kinkajou'
+    name: Kinkajou
   dashboard:
-    upload_file: Upload File
+    form:
+      upload_file: Upload File
+      submit: Submit
+    results: Results
+    table:
+      user_id: User ID
+      name: Name

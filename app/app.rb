@@ -12,9 +12,19 @@ class App < Sinatra::Base
     slim :index
   end
 
-  post '/filter_customers' do
-    content = params[:file]['tempfile'].read
+  post '/' do
+    if params[:file]
+      begin
+        user_locations = params[:file]['tempfile'].readlines.map {|line| JSON.parse(line)}
+      rescue JSON::ParserError => exception
+        return [422, {'content-type' => 'text/plain'}, 'Invalid file.']
+      end
 
-    [200, {}, 'Success']
+      @file_name = params[:file][:filename]
+
+      @filtered_users_info = FilterUsersByProximityService.call(user_locations).sort_by {|user_info| user_info['name']}
+    end
+
+    slim :index
   end
 end

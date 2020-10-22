@@ -1,11 +1,24 @@
 .col-6
-    h3.col-6
-      = I18n.t('dashboard.upload_file')
+  h3.col-6
+    = I18n.t('dashboard.form.upload_file')
 
-    form.form-group.col-6 action='/filter_invitation' method='post' enctype="multipart/form-data" remote=true
-        input style="margin: 15px 0; font-size: 20px;" type='file' name='customer_data'
+  form.form-group.col-6 action='/' method='post' enctype="multipart/form-data"
+    input style="margin: 15px 0; font-size: 20px;" type='file' name='file'
 
-        input.btn.col-6 style="margin: 15px 0; background-color: #2B6CDE; color: #fff;" type='submit' value='Submit'
+    input.btn.col-6 style="margin: 15px 0; background-color: #2B6CDE; color: #fff;" type='submit' value="#{I18n.t('dashboard.form.submit')}"
 
-.col-6
-    h3 Results
+- if @filtered_users_info
+  .col-6
+    h3 = I18n.t('dashboard.results')
+    p = @file_name
+
+    table.table
+      thead
+        tr
+          th = I18n.t('dashboard.table.user_id')
+          th = I18n.t('dashboard.table.name')
+      tbody
+        - @filtered_users_info.each do |user_info|
+          tr
+            td = user_info['user_id']
+            td = user_info['name']
